@@ -16,4 +16,12 @@ public class PlanetMapper {
 
         return planet;
     }
+
+    public PlanetDto planetToDto(Planet planet) {
+        PlanetDto dto = new PlanetDto();
+        dto.setName(planet.getName());
+        dto.setLordName(planet.getLord() == null ? "Lack of lord" : planet.getLord().getName());
+
+        return dto;
+    }
 }

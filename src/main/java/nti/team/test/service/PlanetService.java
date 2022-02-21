@@ -2,7 +2,6 @@ package nti.team.test.service;
 
 import lombok.AllArgsConstructor;
 import nti.team.test.dto.PlanetDto;
-import nti.team.test.facade.PlanetFacade;
 import nti.team.test.mapper.PlanetMapper;
 import nti.team.test.model.Lord;
 import nti.team.test.model.Planet;
@@ -19,13 +18,12 @@ public class PlanetService {
 
     private final PlanetRepository planetRepository;
     private final PlanetMapper planetMapper;
-    private final PlanetFacade planetFacade;
 
     public List<PlanetDto> allPlanets() {
         List<Planet> planetList = planetRepository.findAll();
         List<PlanetDto> dtoList = new ArrayList<>();
         for (Planet planet : planetList) {
-            dtoList.add(planetFacade.planetToDto(planet));
+            dtoList.add(planetMapper.planetToDto(planet));
         }
         return dtoList;
     }

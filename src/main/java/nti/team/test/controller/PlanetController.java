@@ -23,12 +23,12 @@ public class PlanetController {
     @PostMapping("/")
     public String addPlanet(@RequestBody PlanetDto dto) {
         planetService.addPlanet(dto);
-        return "Planet added successfully";
+        return "Planet " + dto.getName() + " added successfully";
     }
 
     @DeleteMapping("/")
     public String deletePlanet(@RequestBody PlanetDto dto) {
         planetService.deletePlanet(dto);
-        return "Planet deleted successfully";
+        return "Planet " + dto.getName() + " deleted successfully";
     }
 }

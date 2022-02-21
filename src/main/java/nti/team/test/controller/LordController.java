@@ -24,7 +24,7 @@ public class LordController {
     @PostMapping("/")
     public String addLord(@RequestBody LordDto dto) {
         lordService.addLord(dto);
-        return "Lord added";
+        return "Lord " + dto.getName() + " added";
     }
 
     @PostMapping("/planet")

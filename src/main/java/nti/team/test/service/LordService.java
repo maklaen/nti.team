@@ -3,7 +3,6 @@ package nti.team.test.service;
 import lombok.AllArgsConstructor;
 import nti.team.test.dto.LordDto;
 import nti.team.test.dto.NameLordAndPlanetDto;
-import nti.team.test.facade.LordFacade;
 import nti.team.test.mapper.LordMapper;
 import nti.team.test.model.Lord;
 import nti.team.test.model.Planet;
@@ -24,13 +23,12 @@ public class LordService {
     private final LordRepository lordRepository;
     private final PlanetRepository planetRepository;
     private final LordMapper lordMapper;
-    private final LordFacade lordFacade;
 
     public List<LordDto> allLords() {
         List<Lord> lordList = lordRepository.findAll();
         List<LordDto> dtoList = new ArrayList<>();
         for (Lord lord : lordList) {
-            dtoList.add(lordFacade.lordToDto(lord));
+            dtoList.add(lordMapper.lordToDto(lord));
         }
         return dtoList;
     }
@@ -73,7 +71,7 @@ public class LordService {
         List<Lord> lordList = lordRepository.findLordsByPlanetsNull();
         List<LordDto> dtoList = new ArrayList<>();
         for (Lord lord : lordList) {
-            dtoList.add(lordFacade.lordToDto(lord));
+            dtoList.add(lordMapper.lordToDto(lord));
         }
         return dtoList;
     }
@@ -82,7 +80,7 @@ public class LordService {
         List<Lord> lordList = lordRepository.findFirst10ByOrderByAgeAsc();
         List<LordDto> dtoList = new ArrayList<>();
         for (Lord lord : lordList) {
-            dtoList.add(lordFacade.lordToDto(lord));
+            dtoList.add(lordMapper.lordToDto(lord));
         }
         return dtoList;
     }
