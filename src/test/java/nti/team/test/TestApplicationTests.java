@@ -202,10 +202,12 @@ class TestApplicationTests {
 		List<LordDto> lords = lordService.getTo10YongLords();
 
 		for (LordDto lord : lords) {
+			// Всего 12 лордов, у 10 из них 18 лет, остальные 22 года.
+			// В базе данных они расположены без порядка, в данном тесте я проверяют только тех, у кого 18 лет, т.к их всего 10
 			Assertions.assertEquals(18, lord.getAge());
 		}
 
-		System.out.println("Planet was added successfully!");
+		System.out.println("Test passed!");
 	}
 
 }
